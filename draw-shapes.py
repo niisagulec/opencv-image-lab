@@ -1,10 +1,10 @@
 import cv2
 import numpy as np
 
-img=cv2.imread('sepet.jpg')
+img=cv2.imread('assets/images/sepet.jpg')
 
 while True:
-    cv2.imshow('sepet',img)
+    cv2.imshow('assets/images/sepet',img)
 
     key = cv2.waitKey(1) & 0xFF
 
