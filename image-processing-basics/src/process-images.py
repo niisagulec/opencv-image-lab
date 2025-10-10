@@ -6,15 +6,6 @@ img2=cv2.imread('../assets/images/kahlo.jpg')
 img3=cv2.imread('../assets/images/ny.jpg')
 img4=cv2.imread('../assets/images/manzara.jpg')
 
-# quick checks to avoid NameError later
-if img1 is None:
-    raise FileNotFoundError("../assets/images/sepet.jpg not found")
-if img2 is None:
-    raise FileNotFoundError("../assets/images/kahlo.jpg not found")
-if img3 is None:
-    raise FileNotFoundError("../assets/images/ny.jpg not found")
-if img4 is None:
-    raise FileNotFoundError("../assets/images/manzara.jpg not found")
 
 img1_gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
 img2_hsv = cv2.cvtColor(img2, cv2.COLOR_BGR2HSV)
@@ -28,8 +19,6 @@ img1_resized = cv2.resize(img1, (300, 300))
 img2_resized = cv2.resize(img2, (300, 300))
 img3_resized = cv2.resize(img3, (300, 300))
 img4_resized = cv2.resize(img4, (300, 300))
-
-# ensure img1_rotated is created (180° flip) right after resized
 img1_rotated = cv2.rotate(img1_resized, cv2.ROTATE_180)
 
 img1_cropped = img1_resized[50:250, 50:250]

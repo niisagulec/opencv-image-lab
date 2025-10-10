@@ -2,11 +2,11 @@ import cv2
 import numpy as np
 import sys
 
-# use already-modified images from outputs
-p1 = '../outputs/img1_rotated.jpg'    # rotated image from process-images.py
-p2 = '../outputs/img2_resized.jpg'    # resized version
-p3 = '../outputs/img3_rgb.jpg'        # rgb-converted version
-p4 = '../outputs/img4_bright.jpg'     # brightened version
+
+p1 = '../outputs/img1_rotated.jpg'    
+p2 = '../outputs/img2_resized.jpg'    
+p3 = '../outputs/img3_rgb.jpg'        
+p4 = '../outputs/img4_bright.jpg'     
 
 img1 = cv2.imread(p1)
 img2 = cv2.imread(p2)
@@ -22,7 +22,6 @@ if img3 is None:
 if img4 is None:
     print(f"Not found: {p4}"); sys.exit(1)
 
-# ensure 3-channel BGR for all images
 imgs = [img1, img2, img3, img4]
 for i, im in enumerate(imgs):
     if im.ndim == 2:
