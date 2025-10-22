@@ -3,10 +3,10 @@ import numpy as np
 import sys
 
 
-p1 = '../outputs/img1_rotated.jpg'    
-p2 = '../outputs/img2_resized.jpg'    
-p3 = '../outputs/img3_rgb.jpg'        
-p4 = '../outputs/img4_bright.jpg'     
+p1 = 'outputs/img1_rotated.jpg'    
+p2 = 'outputs/img2_resized.jpg'    
+p3 = 'outputs/img3_rgb.jpg'        
+p4 = 'outputs/img4_bright.jpg'     
 
 img1 = cv2.imread(p1)
 img2 = cv2.imread(p2)
@@ -38,7 +38,7 @@ top = np.hstack((img1, img2))
 bottom = np.hstack((img3, img4))
 collage = np.vstack((top, bottom))
 
-out = '../outputs/collage.jpg'
+out = 'outputs/collage.jpg'
 cv2.imwrite(out, collage)
 cv2.imshow('Collage', collage)
 cv2.waitKey(0)
