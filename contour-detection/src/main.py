@@ -1,21 +1,25 @@
 import cv2
 import numpy as np
 import sys
+import os
 
 IMAGE_PATH = "../assets/image.jpg" 
-OUTPUT_PATH = "../outputs/output_basit.jpg"
+OUTPUT_PATH = "../outputs/output.jpg"
 
 img = None
 gray = None
 blur = None
 MIN_CONTOUR_AREA = 1000 
 
+last_result = None
+last_count = 0
+
 def nothing(x):
     pass
 
 def process_image(val=None):
-    
-    global img, blur
+
+    global img, blur, last_result, last_count
     
     if img is None or blur is None:
         return
@@ -60,8 +64,12 @@ def process_image(val=None):
     cv2.imshow("Canny Kenarlari", cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR))
     cv2.imshow("Kontrol Penceresi", img_copy) 
 
+
+    last_result = img_copy.copy()
+    last_count = count
+
 def main():
-    global img, gray, blur
+    global img, gray, blur, last_result, last_count
 
     img = cv2.imread(IMAGE_PATH)
     if img is None:
@@ -86,6 +94,10 @@ def main():
     low = cv2.getTrackbarPos("Alt Esik", "Kontrol Penceresi")
     high = cv2.getTrackbarPos("Ust Esik", "Kontrol Penceresi")
 
+
+    to_save = last_result if last_result is not None else img
+    cv2.imwrite(OUTPUT_PATH, to_save)
+    print(f"Kaydedildi: {OUTPUT_PATH}")
 
     cv2.destroyAllWindows()
 
